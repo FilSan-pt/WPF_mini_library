@@ -1,0 +1,42 @@
+﻿<Window x:Class="bilbiotecaSoWindows.View.reservationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bilbiotecaSoWindows.View"
+        mc:Ignorable="d"
+                WindowStartupLocation="CenterScreen"
+
+        Title="reservationView" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Utilizador"/>
+        <!-- Mode=TwoWay foi usado para reforçar a comunicação dos dois sentidos -->
+        <ComboBox x:Name="comboUsers" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding users}" SelectedValue="{Binding reservation.reservationUser, Mode=TwoWay}" IsEditable="True" IsTextSearchEnabled="True"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="ISBN"/>
+        <ComboBox x:Name="comboBooks"  Grid.Column="1" Grid.Row="1" ItemsSource="{Binding books}" SelectedValue="{Binding reservation.reservationBook, Mode=TwoWay}" IsEditable="True" IsTextSearchEnabled="True"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Data Reserva"/>
+        <TextBox x:Name="txtResDT" Grid.Column="1" Grid.Row="2" Text="{Binding Path=reservation.reservationDateTime, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Data Levantamento"/>
+        <TextBox x:Name="txtpickDT" Grid.Column="1" Grid.Row="3" Text="{Binding Path=reservation.pickUpDateTime, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Data Entrega"/>
+        <TextBox x:Name="txtExpectDT" Grid.Column="1" Grid.Row="4" Text="{Binding Path=reservation.expectedDeliveryDateTime, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="Observações"/>
+        <TextBox x:Name="txtObs" Grid.Column="1" Grid.Row="5" Text="{Binding Path=reservation.observations, UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <Button x:Name="btnSave" Grid.Column="1" Command="{Binding saveResCommand}" Grid.Row="7" HorizontalAlignment="Right">Guardar</Button>
+    </Grid>
+</Window>

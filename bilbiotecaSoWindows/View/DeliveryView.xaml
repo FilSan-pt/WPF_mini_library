@@ -1,0 +1,97 @@
+﻿<Window x:Class="bilbiotecaSoWindows.View.DeliveryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bilbiotecaSoWindows.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="DeliveryView" SizeToContent="WidthAndHeight" >
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="booltoVis"/>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+        </Style>        
+        <Style TargetType="Grid">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <WrapPanel>
+            <TextBox x:Name="txtSearchedIsbn" Width="120" Margin="5" Text="{Binding isbnSearch, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button x:Name="btnSearch" Margin="5" Width="50" Command="{Binding searchIsbnCommand}">P</Button>
+        </WrapPanel>
+
+        <Grid Visibility="{Binding active}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Nome"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1">
+                <TextBlock x:Name="txtBlName" Text="{Binding completeName, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="Isbn"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1">
+                <TextBlock x:Name="txtBlTitle" Text="{Binding isbnReservation, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="0">
+                <TextBlock Text="Título"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1">
+                <TextBlock x:Name="txtBlIsbn" Text="{Binding bookReservation, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Border Grid.Row="3" Grid.Column="0">
+                <TextBlock Text="Data de Devolução"/>
+            </Border>
+            <Border Grid.Row="3" Grid.Column="1">
+                <TextBlock x:Name="txtBlDeliveryDate" Text="{Binding currentDate, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="0">
+                <TextBlock Text="Multa"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="1">
+                <TextBlock x:Name="txtBlfine" Text="{Binding fine, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="0">
+                <TextBlock Text="Observações Anteriores"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="1">
+                <TextBlock x:Name="txtBlObs" Text="{Binding obsReservation, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+
+            <TextBlock Text="Observações" Grid.Column="0" Grid.Row="7"/>
+            <TextBox x:Name="txtObservations" Text="{Binding currentObs}" Grid.Column="1" Grid.Row="7"></TextBox>            
+        </Grid>
+
+        <Button x:Name="btnRegister" Command="{Binding registerCommand}" Visibility="{Binding active}">Registar</Button>
+    </StackPanel>
+</Window>

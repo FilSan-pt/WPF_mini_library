@@ -1,0 +1,47 @@
+﻿<Window x:Class="bilbiotecaSoWindows.View.NewUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bilbiotecaSoWindows.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="NewUserView" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Primeiro Nome" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTfirstName" Text="{Binding Path=newUser.firstName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left"  Width="204"/>
+
+        <Label Content="Ultimo Nome" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTlastName" Text="{Binding Path=newUser.lastName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="204"/>
+
+        <Label Content="Telemovel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTtelemovel" Text="{Binding Path=newUser.phoneNumber, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Width="204"/>
+
+        <Label Content="Email" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTemail" Text="{Binding Path=newUser.email, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" Width="204"/>
+
+        <Label Content="Username" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTusername" Text="{Binding Path=newUser.userLogin.username, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="204"/>
+
+        <Label Content="Password" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right"/>
+        <TextBox x:Name="TXTpassword" Text="{Binding Path=newUser.userLogin.password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" Width="204"/>
+
+        <Button x:Name="buttonNovoUser" Command="{Binding saveCommand, UpdateSourceTrigger=PropertyChanged}" Content="Gravar" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"/>
+    </Grid>
+</Window>
